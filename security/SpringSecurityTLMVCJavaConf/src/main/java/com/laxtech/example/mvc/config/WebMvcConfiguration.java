@@ -19,7 +19,7 @@ import org.thymeleaf.spring4.view.ThymeleafViewResolver;
 import org.thymeleaf.templatemode.TemplateMode;
 
 @EnableWebMvc
-@ComponentScan("com.laxtech.example..mvc")
+@ComponentScan("com.laxtech.example.mvc")
 public class WebMvcConfiguration extends WebMvcConfigurerAdapter {
 
 	@Autowired
@@ -36,7 +36,7 @@ public class WebMvcConfiguration extends WebMvcConfigurerAdapter {
 
 	@Override
 	public void addResourceHandlers(ResourceHandlerRegistry registry) {
-		registry.addResourceHandler("/resources/**").addResourceLocations("classpath:/resources/")
+		registry.addResourceHandler("/src/main/webapp/resources/**").addResourceLocations("classpath:/resources/")
 				.setCachePeriod(31556926);
 		registry.setOrder(Ordered.HIGHEST_PRECEDENCE);
 	}

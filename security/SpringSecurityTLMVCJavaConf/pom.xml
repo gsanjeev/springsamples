@@ -4,12 +4,12 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>com.laxtech.example</groupId>
-	<artifactId>SpringSecurityTLNoBoot</artifactId>
+	<artifactId>SpringSecurityTLMVCJavaConf</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>war</packaging>
 
-	<name>Spring Security TL  NoBoot</name>
-	<description>Spring Security TL NoBoot</description>
+	<name>Spring Security TL MVC Java Conf</name>
+	<description>Spring Security TL MVC Java Conf</description>
 
 
 	<properties>
@@ -17,40 +17,6 @@
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 		<java.version>1.8</java.version>
 	</properties>
-<!--
-
-	<dependencies>
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-security</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-thymeleaf</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-web</artifactId>
-		</dependency>
-
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-tomcat</artifactId>
-			<scope>provided</scope>
-		</dependency>
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-test</artifactId>
-			<scope>test</scope>
-		</dependency>
-		<dependency>
-			<groupId>org.springframework.security</groupId>
-			<artifactId>spring-security-test</artifactId>
-			<scope>test</scope>
-		</dependency>
-	</dependencies>-->
-
-
 	<dependencyManagement>
 		<dependencies>
 			<dependency>
@@ -70,7 +36,6 @@
 			<scope>compile</scope>
 		</dependency>
 		<dependency>
-
 			<groupId>nz.net.ultraq.thymeleaf</groupId>
 			<artifactId>thymeleaf-layout-dialect</artifactId>
 			<version>2.0.4</version>
@@ -118,6 +83,7 @@
 				</exclusion>
 			</exclusions>
 		</dependency>
+
 		<dependency>
 			<groupId>org.springframework.security</groupId>
 			<artifactId>spring-security-config</artifactId>
@@ -185,8 +151,8 @@
 			<groupId>commons-logging</groupId>
 			<artifactId>commons-logging</artifactId>
 			<version>1.2</version>
-			<scope>compile</scope>
-			<optional>true</optional>
+			<!--<scope>compile</scope>
+			<optional>true</optional>-->
 		</dependency>
 		<dependency>
 			<groupId>javax.servlet</groupId>
@@ -234,7 +200,6 @@
 		<plugins>
 			<plugin>
 				<artifactId>maven-compiler-plugin</artifactId>
-				<version>2.3</version>
 				<configuration>
 					<source>1.7</source>
 					<target>1.7</target>
@@ -244,12 +209,12 @@
 				<artifactId>maven-war-plugin</artifactId>
 				<version>2.3</version>
 				<configuration>
+					<warName>SpringSecurity</warName>
 					<failOnMissingWebXml>false</failOnMissingWebXml>
 				</configuration>
 			</plugin>
 		</plugins>
 	</build>
-
 
 
 </project>
