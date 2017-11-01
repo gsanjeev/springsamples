@@ -1,0 +1,140 @@
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page"
+    xmlns:spring="http://www.springframework.org/tags"
+    xmlns:c="http://java.sun.com/jsp/jstl/core"
+    xmlns:form="http://www.springframework.org/tags/form" version="2.0">
+    <jsp:directive.page language="java" contentType="text/html" />
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+    <head>
+        <title>Compose</title>
+            <link rel="icon" type="image/x-icon" href="${pageContext.request.contextPath}/resources/img/favicon.ico"/>
+            <link href="${pageContext.request.contextPath}/resources/css/bootstrap.css" rel="stylesheet"></link>
+        <style type="text/css">
+              /* Sticky footer styles
+              -------------------------------------------------- */
+
+              html,
+              body {
+                height: 100%;
+                /* The html and body elements cannot have any padding or margin. */
+              }
+
+              /* Wrapper for page content to push down footer */
+              #wrap {
+                min-height: 100%;
+                height: auto !important;
+                height: 100%;
+                /* Negative indent footer by it's height */
+                margin: 0 auto -60px;
+              }
+
+              /* Set the fixed height of the footer here */
+              #push,
+              #footer {
+                height: 60px;
+              }
+              #footer {
+                background-color: #f5f5f5;
+              }
+
+              /* Lastly, apply responsive CSS fixes as necessary */
+              @media (max-width: 767px) {
+                #footer {
+                  margin-left: -20px;
+                  margin-right: -20px;
+                  padding-left: 20px;
+                  padding-right: 20px;
+                }
+              }
+
+
+
+              /* Custom page CSS
+              -------------------------------------------------- */
+              /* Not required for template or sticky footer method. */
+
+              .container {
+                width: auto;
+                max-width: 680px;
+              }
+              .container .credit {
+                margin: 20px 0;
+                text-align: center;
+              }
+              a {
+                  color: green;
+              }
+              .navbar-form {
+                margin-left: 1em;
+              }
+            </style>
+            <link href="${pageContext.request.contextPath}/resources/css/bootstrap-responsive.css" rel="stylesheet"></link>
+    </head>
+    <body>
+
+      <c:url value="/logout" var="logoutUrl"/>
+                        <c:url value="/" var="inboxUrl"/>
+                        <c:url value="/" var="composeUrl">
+                                            <c:param name="form" value=""/>
+                                          </c:url>
+        <div id="wrap">
+          <div class="navbar navbar-inverse navbar-static-top">
+            <div class="navbar-inner">
+              <div class="container">
+              <a class="brand" href="${inboxUrl}"><img src="/resources/img/logo.png" alt="Sanjeev Spring Security Sample"/></a>
+                <div class="nav-collapse collapse">
+                  <c:if test="${pageContext.request.remoteUser != null}">
+                  <div>
+                      <form:form class="navbar-form pull-right" action="${logoutUrl}" method="post">
+                      <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+                          <input type="submit" value="Log out" />
+                      </form:form>
+
+                      <p class="navbar-text pull-right" >
+                        <c:out value="${pageContext.request.remoteUser}"/>
+                      </p>
+                  </div>
+                  </c:if>
+
+
+                  <ul class="nav">
+                    <li><a href="${inboxUrl}">Inbox</a></li>
+                    <li><a href="${composeUrl}">Compose</a></li>
+                  </ul>
+                </div>
+              </div>
+          </div>
+        </div>
+          <!-- Begin page content -->
+          <div class="container">
+            <c:if test="${globalMessage != null}">
+            <div class="alert alert-success">
+                <c:out value="${globalMessage}"/>
+            </div>
+            </c:if>
+        <div class="container">
+            <h1>Messages : Create</h1>
+            <form:form action="./" method="post" modelAttribute="message">
+                <form:errors path="*" element="div" cssClass="alert alert-error" />
+                <label for="summary">Summary</label>
+                <form:input type="text" path="summary" class="input-xxlarge" />
+                <label for="text">Message</label>
+                <form:textarea path="text" class="input-xxlarge"></form:textarea>
+                <div class="form-actions">
+                    <input type="submit" value="Create" />
+                </div>
+            </form:form>
+        </div>
+
+              </div>
+
+              <div id="push"><!--  --></div>
+            </div>
+
+                <div id="footer">
+                  <div class="container">
+                    <p class="muted credit">Visit the <a href="https://github.com/gsanjeev/springsamples">Sanjeev Code</a> site for more <a href="https://github.com/gsanjeev/springsamples">samples</a>.</p>
+                  </div>
+                </div>
+    </body>
+    </html>
+</jsp:root>
